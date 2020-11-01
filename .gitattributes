@@ -1,0 +1,5 @@
+*.js linguist-language=TypeScript
+*.json linguist-detectable=false
+*.ts linguist-detectable=true
+**/*.ts linguist-detectable=true
+**/*.d.ts linguist-detectable=true

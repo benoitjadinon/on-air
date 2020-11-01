@@ -5,14 +5,15 @@ import Wemo from 'wemo-client';
 import { interval, from, Observable, Observer, combineLatest } from 'rxjs';
 import { distinctUntilChanged, map, startWith, switchMap } from 'rxjs/operators';
 
-const lightId = '221547K11000ED';
+const deviceSerialId = '221547K11000ED';
 
 const wemo = new Wemo();
 
 const device$ = new Observable(
 	(observer: Observer<WemoClient>) => {
 		wemo.discover((err:unknown , deviceInfo:IWemoDeviceInfo) => {
-			if (deviceInfo.serialNumber == lightId) {
+			console.log(`Wemo discovered : ${deviceInfo.friendlyName} : ${deviceInfo.serialNumber}`)
+			if (deviceInfo.serialNumber == deviceSerialId) {
 				observer.next(wemo.client(deviceInfo));
 			}
 		});

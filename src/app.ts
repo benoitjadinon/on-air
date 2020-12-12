@@ -41,5 +41,5 @@ const isCamOn$ = interval(1000)
 
 combineLatest([wemoLight$, isCamOn$])
 	.subscribe(([wemoLight, isCamOn]) => {
-		wemoLight.setBinaryState((+!!isCamOn).toString() as "1" | "0");
+		wemoLight.setBinaryState((+isCamOn).toString() as "1" | "0");
 	})
